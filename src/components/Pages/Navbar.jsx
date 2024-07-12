@@ -1,29 +1,27 @@
-import React, { useState, useContext } from 'react';
-import { Link,useNavigate  } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { BiMenu } from 'react-icons/bi';
 import image from '../../assets/image.png';
 
 const Navbar = ({ toggleSidebar }) => {
-
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const navigate = useNavigate();
+
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   };
+
   const closeDropdown = () => {
     setDropdownOpen(false);
   };
+
   const handleLogout = () => {
-    // Add your logout logic here (e.g., clear local storage, update global state)
-    localStorage.removeItem('userToken'); // Example: clear user token
-    sessionStorage.removeItem("loggedInUserId");
-    sessionStorage.removeItem("loggedInUserName");
-    sessionStorage.removeItem("loggedInUserEmail");
-    sessionStorage.removeItem("loggedInUserContact");
+    // Clear user session or any authentication data
     sessionStorage.clear();
-    navigate('/'); // Redirect to login page
-    closeDropdown(); // Close the dropdown
+    // Redirect to login page
+    navigate('/');
   };
+
   return (
     <header className="flex w-full justify-between items-center bg-blue-800 p-4 text-white">
       <div className="flex items-center">
@@ -73,7 +71,6 @@ const Navbar = ({ toggleSidebar }) => {
           />
           {dropdownOpen && (
             <div className="absolute right-0 mt-2 py-2 w-48 bg-white rounded-md shadow-xl z-20">
-             
               <Link
                 to="/profile"
                 className="block px-4 py-2 text-gray-800"
@@ -92,8 +89,9 @@ const Navbar = ({ toggleSidebar }) => {
               <hr />
               <button
                 onClick={handleLogout}
-                className="block w-full text-left px-4 py-2 text-gray-800">
-                Logout
+                className="block w-full text-left px-4 py-2 text-gray-800"
+              >
+                Log Out
               </button>
             </div>
           )}
@@ -102,5 +100,6 @@ const Navbar = ({ toggleSidebar }) => {
     </header>
   );
 };
+
 
 export default Navbar;
