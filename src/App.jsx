@@ -11,8 +11,6 @@ import Password from './components/Pages/Password';
 
 function App() {
   return (
-
-
     <AuthProvider>
 
       <Router>
