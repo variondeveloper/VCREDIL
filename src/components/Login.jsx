@@ -11,12 +11,9 @@ const Login = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const { login } = useContext(AuthContext);
-  
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
-
     try {
       const response = await fetch(API_URLS.login, {
         method: "POST",
@@ -96,5 +93,7 @@ const Login = () => {
     </div>
   );
 };
+
+
 
 export default Login;
